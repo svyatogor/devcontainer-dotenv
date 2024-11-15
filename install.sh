@@ -5,3 +5,4 @@ sudo apt-get update
 sudo apt-get install -y fish eza fzf
 sudo usermod --shell /usr/bin/fish vscode
 fish ./setup.fish
+exit 0
