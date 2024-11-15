@@ -1,3 +1,4 @@
+# Peristen fish history accross container restarts
 if test -z "$XDG_DATA_HOME"
     set history_location ~/.local/share/fish/fish_history
 else
@@ -10,12 +11,15 @@ ln -s /dc/shellhistory/fish_history $history_location
 sudo chown -R vscode $history_location
 
 status is-interactive; and begin
+    set -gx BAT_THEME "Catppuccin Frappe"
+    set -gx BAT_PAGER 'less -R'
+    set -gx BAT_STYLE numbers
+
     # Abbreviations
     abbr --add -- gp 'git push'
     abbr --add -- gss 'git status -s'
 
     # Aliases
-    alias eza 'eza --icons auto --git'
     alias la 'eza -a'
     alias less bat
     alias ll 'eza -l'
@@ -23,6 +27,7 @@ status is-interactive; and begin
     alias ls eza
     alias lt 'eza --tree'
     alias vim nvim
+    alias less=bat
 
     function __node_binpath_cwd -v PWD
         set -l node_modules_path "$PWD/node_modules/.bin"
@@ -49,6 +54,4 @@ status is-interactive; and begin
     #set hydro_color_git yellow
     #set fish_prompt_pwd_dir_length 50 # maximum lenght of dir path
     fzf_configure_bindings
-
-
 end

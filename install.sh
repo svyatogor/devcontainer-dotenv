@@ -4,8 +4,10 @@ export DEBIAN_FRONTEND=noninteractive
 sudo apt-get install -y software-properties-common
 sudo apt-add-repository -y ppa:fish-shell/release-3
 sudo apt-get update
-sudo apt-get install -y fish eza fzf stow
+sudo apt-get install -y fish eza fzf bat stow
 
 rm -rf ~/.config/fish
 stow fish
+stow bat
+bat cache --build
 ./setup.fish
