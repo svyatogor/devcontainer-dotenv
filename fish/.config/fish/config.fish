@@ -11,25 +11,25 @@ ln -s /dc/shellhistory/fish_history $history_location
 sudo chown -R vscode $history_location
 
 status is-interactive; and begin
-    set -gx BAT_THEME "Catppuccin Frappe"
-    set -gx BAT_PAGER 'less -R'
-    set -gx BAT_STYLE numbers
+    set BAT_THEME "Catppuccin Frappe"
+    set BAT_PAGER 'less -R'
+    set BAT_STYLE numbers
 
     # Abbreviations
     abbr --add -- gp 'git push'
     abbr --add -- gss 'git status -s'
 
     # Aliases
-    alias la 'eza -a'
-    alias less bat
-    alias ll 'eza -l'
-    alias lla 'eza -la'
-    alias ls eza
-    alias lt 'eza --tree'
-    alias vim nvim
+    # alias la 'eza -a'
+    # alias less bat
+    # alias ll 'eza -l'
+    # alias lla 'eza -la'
+    # alias ls eza
+    # alias lt 'eza --tree'
+    # alias vim nvim
     alias less=bat
 
-    function __node_binpath_cwd -v PWD
+    function __binpath_cwd -v PWD
         set -l node_modules_path "$PWD/node_modules/.bin"
         if test -e "$node_modules_path"
             set -g __node_binpath "$node_modules_path"
@@ -40,12 +40,23 @@ status is-interactive; and begin
             and set -e PATH[$index]
             and set -e __node_binpath
         end
+
+        set -l rails_bin "./bin"
+        if test -e "$rails_bin/rails"
+            set -g __rails_binpath "$rails_bin"
+            set -x PATH $PATH $__rails_binpath
+        else
+            set -q __rails_binpath
+            and set -l index (contains -i -- $__rails_binpath $PATH)
+            and set -e PATH[$index]
+            and set -e __rails_binpath
+        end
     end
 
-    __node_binpath_cwd $PWD
+    __binpath_cwd $PWD
 
     set EZA_STANDARD_OPTIONS --group --header --group-directories-first --icons
-    set -gx EDITOR code
+    set EDITOR code
 
     set fish_greeting # Disable greeting
     set fish_color_valid_path
