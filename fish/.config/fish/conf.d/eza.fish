@@ -1,1 +1,0 @@
-set -xg EZA_STANDARD_OPTIONS --group --header --group-directories-first --icons
