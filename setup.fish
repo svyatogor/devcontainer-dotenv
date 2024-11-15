@@ -6,6 +6,4 @@ fisher install plttn/fish-eza
 fisher install jorgebucaran/hydro
 fisher install catppuccin/fish
 
-yes | fish_config theme save "Catppuccin Frappe"
-
 
