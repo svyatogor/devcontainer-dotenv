@@ -7,3 +7,4 @@ sudo apt-get update
 sudo apt-get install -y fish eza fzf stow
 
 stow fish
+./setup.fish
