@@ -5,7 +5,6 @@ sudo apt-get update
 sudo apt-get install -y fish eza fzf
 
 mkdir -p ~/.config/fish/conf.d
-whoami
 for file in ~/dotfiles/fish/conf.d/*; do
   ln -sf "$file" ~/.config/fish/conf.d/
 done
@@ -13,8 +12,7 @@ done
 echo "Setting up fish"
 echo "Installing fisher"
 curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish > /tmp/fisher.fish
-fish /tmp/fisher.fish
-fish -c 'fisher install jorgebucaran/fisher'
+fish -c 'source /tmp/fisher.fish && fisher install jorgebucaran/fisher'
 echo "Fisher installation complete"
 
 echo "Installing PatrickF1/fzf.fish"
