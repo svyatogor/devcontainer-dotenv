@@ -10,9 +10,10 @@ for file in ~/dotfiles/fish/conf.d/*; do
 done
 
 echo "Setting up fish"
+
 echo "Installing fisher"
-curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish > /tmp/fisher.fish
-fish -c 'source /tmp/fisher.fish && fisher install jorgebucaran/fisher'
+curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish > ~/.config/fish/functions/fisher.fish
+fish -c 'fisher install jorgebucaran/fisher'
 echo "Fisher installation complete"
 
 echo "Installing PatrickF1/fzf.fish"
