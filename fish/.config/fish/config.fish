@@ -1,3 +1,14 @@
+if test -z "$XDG_DATA_HOME"
+    set history_location ~/.local/share/fish/fish_history
+else
+    set history_location $XDG_DATA_HOME/fish/fish_history
+end
+if test -f $history_location
+    mv $history_location "$history_location-old"
+end
+ln -s /dc/shellhistory/fish_history $history_location
+sudo chown -R vscode $history_location
+
 status is-interactive; and begin
     # Abbreviations
     abbr --add -- gp 'git push'
