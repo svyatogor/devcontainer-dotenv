@@ -12,7 +12,9 @@ done
 
 echo "Setting up fish"
 echo "Installing fisher"
-fish -c 'curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher'
+curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish > /tmp/fisher.fish
+fish /tmp/fisher.fish
+fish -c 'fisher install jorgebucaran/fisher'
 echo "Fisher installation complete"
 
 echo "Installing PatrickF1/fzf.fish"
