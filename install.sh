@@ -8,9 +8,9 @@ sudo apt-get install -y fish eza fzf stow
 
 stow fish
 
-fish -c "curl -sL https://git.io/fisher | source && fisher update"
+fish -c 'curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && (fisher install jorgebucaran/fisher < /dev/null)'
 echo "Fisher done"
-
+fish -c 'fisher update < /dev/null'
 # Set fish as default shell
 FISH="$(which fish)"
 CURRENT_USER="$(whoami)"
