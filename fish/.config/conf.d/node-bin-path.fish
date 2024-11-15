@@ -11,4 +11,6 @@ function __node_binpath_cwd -v PWD
   end
 end
 
-__node_binpath_cwd $PWD
+if status is-interactive
+  __node_binpath_cwd $PWD
+end
