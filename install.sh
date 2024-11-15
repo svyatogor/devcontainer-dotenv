@@ -5,7 +5,7 @@ sudo apt-get update
 sudo apt-get install -y fish eza fzf
 
 mkdir -p ~/.config/fish/conf.d
-
+whoami
 for file in ~/dotfiles/fish/conf.d/*; do
   ln -sf "$file" ~/.config/fish/conf.d/
 done
