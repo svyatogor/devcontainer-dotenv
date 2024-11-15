@@ -18,5 +18,7 @@ abbr --add --global gp git push
 
 mkdir -p ~/.config/fish/conf.d
 
-cp ~/dotfiles/node-bin-path.fish ~/.config/fish/conf.d/00-path.fish
-cp ~/dotfiles/aliases.fish ~/.config/fish/conf.d/aliases.fish
+for file in ~/dotfiles/fish/conf.d/*
+  ln -sf $file ~/.config/fish/conf.d/
+end
+
