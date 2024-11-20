@@ -7,8 +7,9 @@ end
 if test -f $history_location
     mv $history_location "$history_location-old"
 end
+USER
 ln -s /dc/shellhistory/fish_history $history_location
-sudo chown -R vscode $history_location
+sudo chown -R $USER $history_location
 
 status is-interactive; and begin
     set BAT_THEME "Catppuccin Frappe"
