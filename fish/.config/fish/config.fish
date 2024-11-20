@@ -8,8 +8,10 @@ if test -f $history_location
     mv $history_location "$history_location-old"
 end
 
-ln -s /dc/shellhistory/fish_history $history_location
-sudo chown -R $USER $history_location
+if not test -f $history_location
+    ln -s /dc/shellhistory/fish_history $history_location
+    sudo chown -R $USER $history_location
+end
 
 status is-interactive; and begin
     set BAT_THEME "Catppuccin Frappe"
